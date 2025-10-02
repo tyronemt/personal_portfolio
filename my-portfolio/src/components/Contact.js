@@ -3,13 +3,13 @@ import React from 'react';
 function Contact() {
   return (
     <section id="contact" className="section">
-      <h2>Contact</h2>
-      <p>Feel free to reach out! You can find me on:</p>
-      <div className="contact-links">
-        <a href="mailto:your.email@example.com">Email</a>
-        <a href="https://www.linkedin.com/in/yourprofile/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
+      <h2>Contact.</h2>
+      <form className="contact-form">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" rows="5" required></textarea>
+        <button type="submit" className="submit-button">SEND IT!</button>
+      </form>
     </section>
   );
 }
