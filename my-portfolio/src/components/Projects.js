@@ -1,24 +1,32 @@
 import React from 'react';
 
 // You'll want to replace these with your actual project images
-import projectImage1 from '../assets/sorting_visualizer.png'; 
-import projectImage2 from '../assets/task_manager.png';
+import projectImage1 from '../assets/task_manager.png';
+import projectImage2 from '../assets/sorting_visualizer.png';
+import projectImage3 from '../assets/doctools.png'; // Added image for DocTools
 
 function Projects() {
   const projectData = [
     {
-      title: 'Skimreads - Social Media App',
-      description: 'A social media app built with React, Redux, Firebase, Express, and Vercel.',
-      liveLink: '#',
-      codeLink: '#',
+      title: 'Task Manager App',
+      description: 'A full-stack task management application using MongoDB, Express.js, React, and Node.js (MERN) with RESTful APIs for all CRUD operations.',
+      liveLink: 'https://full-stack-task-manager-app-omega.vercel.app/', // TODO: Add live site URL
+      codeLink: 'https://github.com/tyronemt/full-stack-task-manager-app', // TODO: Add code repository URL
       image: projectImage1,
     },
     {
-      title: 'Chakra Chat - Messaging App',
-      description: 'A real-time messaging application using modern web technologies.',
-      liveLink: '#',
-      codeLink: '#',
+      title: 'Sorting Visualizer',
+      description: 'An interactive web app built with React and JavaScript to demonstrate nine distinct sorting algorithms, featuring auditory feedback via the Web Audio API.',
+      liveLink: 'https://sorting-visualizer-psi-seven.vercel.app/', // TODO: Add live site URL
+      codeLink: 'https://github.com/tyronemt/sorting-visualizer', // TODO: Add code repository URL
       image: projectImage2,
+    },
+    {
+      title: 'DocTools',
+      description: 'A Python/Flask application hosted on AWS EC2, designed to increase workplace efficiency and productivity within a medical office.',
+      liveLink: 'https://www.youtube.com/watch?v=rmzzODVMQFc', // TODO: Add live site URL
+      codeLink: 'https://github.com/tyronemt/doctools', // TODO: Add code repository URL
+      image: projectImage3,
     },
   ];
 
