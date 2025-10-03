@@ -1,59 +1,62 @@
 import React from 'react';
+import './Experience.css'; // We will replace the styles in this file
 
-// Data extracted from your resume.
+// Add a 'tags' array to each job object
 const experienceData = [
   {
-    [cite_start]title: "Software Developer", // [cite: 8]
-    [cite_start]company: "United States Department of Defense United States Army Futures Command", // [cite: 9]
-    [cite_start]location: "Picatinny Arsenal, NJ", // [cite: 10]
-    [cite_start]dates: "Jan. 2024- Present", // [cite: 10]
+    role: 'Software Developer',
+    company: 'United States Department of Defense',
+    dates: 'Jan. 2024 - Present',
     description: [
-      [cite_start]"Developed, tested, and maintained the real-time embedded software responsible for controlling the M109A7 Paladin artillery system.", // [cite: 11]
-      [cite_start]"Performed in-depth software analysis and implemented code for new features, system enhancements, and critical bug fixes.", // [cite: 12]
-      [cite_start]"Authored detailed technical documentation, including software design and analysis papers, to support formal technical reviews and communicate project status to stakeholders.", // [cite: 13]
-      [cite_start]"Translated complex project requirements and objectives into functional, high-quality code for software components and configuration items.", // [cite: 14]
-      "Collaborated with peers and other government agencies to integrate software components, ensuring project goals were met according to technical specifications and schedules." [cite_start]// [cite: 15]
-    ]
+      'Developed, tested, and maintained real-time embedded software for the M109A7 Paladin artillery system.',
+      'Performed in-depth software analysis and implemented code for new features, system enhancements, and critical bug fixes.',
+      'Authored detailed technical documentation to support formal technical reviews and communicate project status to stakeholders.',
+    ],
+    tags: ['Ada', 'C++', 'Embedded Systems', 'Real-Time OS'],
   },
   {
-    [cite_start]title: "Software/NOC Engineer Intern", // [cite: 16]
-    [cite_start]company: "Newegg Inc", // [cite: 17]
-    [cite_start]location: "Rowland Heights, CA", // [cite: 18]
-    [cite_start]dates: "Sep. 2020 Jan. 2022", // [cite: 18]
+    role: 'Software/NOC Engineer Intern',
+    company: 'Newegg Inc',
+    dates: 'Sep. 2020 - Jan. 2022',
     description: [
-      [cite_start]"Designed and implemented the Build-A-PC application using ReactJS and Java, resulting in a 20% improvement in component search speed and a 15% boost in user engagement.", // [cite: 19]
-      [cite_start]"Established automated JavaScript and Python testing using Selenium and Robot libraries, improving site reliability and streamlining the testing process.", // [cite: 20]
-      [cite_start]"Oversaw IT systems, including 100+ websites, internal applications, infrastructure, and 11 data centers, using Datadog and Pingdom to ensure optimal performance and availability.", // [cite: 21]
-      "Verified and resolved issues by analyzing root causes and applying appropriate standard operating procedures, and identified areas for improvement in monitoring systems and methods." [cite_start]// [cite: 22]
-    ]
-  }
+      'Designed and implemented the Build-A-PC application using ReactJS and Java, resulting in a 20% improvement in component search speed.',
+      'Established automated JavaScript and Python testing using Selenium and Robot libraries, improving site reliability.',
+      'Oversaw IT systems, including 100+ websites, internal applications, and 11 data centers, using Datadog and Pingdom.',
+    ],
+    tags: ['React', 'Java', 'Python', 'Selenium', 'Datadog'],
+  },
 ];
 
-const Experience = () => {
+function Experience() {
   return (
-    // You can replace the className with your own for styling
-    <section id="experience" className="my-8">
-      <h2 className="text-2xl font-bold mb-4">Experience</h2>
-      <div className="space-y-6">
+    <section id="experience" className="section">
+      <h2>Experience</h2>
+      <div className="experience-timeline">
         {experienceData.map((job, index) => (
-          <div key={index} className="experience-item">
-            <h3 className="text-xl font-semibold">{job.title}</h3>
-            <p className="text-md font-medium text-gray-600">
-              {job.company}
-            </p>
-            <p className="text-sm text-gray-500 mb-2">
-              {job.location} | {job.dates}
-            </p>
-            <ul className="list-disc list-inside space-y-1">
-              {job.description.map((point, i) => (
-                <li key={i}>{point}</li>
-              ))}
-            </ul>
-          </div>
+          <article key={index} className="timeline-item">
+            <div className="timeline-dot"></div>
+            <div className="timeline-content">
+              <div className="timeline-header">
+                <h3>{job.role}</h3>
+                <span>{job.dates}</span>
+              </div>
+              <p className="company-name">{job.company}</p>
+              <ul>
+                {job.description.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+              <div className="tags-container">
+                {job.tags.map((tag, i) => (
+                  <span key={i} className="tag-pill">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
         ))}
       </div>
     </section>
   );
-};
+}
 
 export default Experience;
