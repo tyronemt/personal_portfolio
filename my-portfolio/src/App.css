@@ -59,18 +59,25 @@ body {
 
 /* === HERO SECTION === */
 .hero {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Add your subtle background pattern here */
-  /* background-image: url('path/to/pattern.svg'); */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 1rem;
 }
 
 .hero-content h1 {
   font-size: 3.5rem;
   margin: 0;
+  height: 100px;
 }
 
 .hero-content p {
@@ -86,95 +93,150 @@ body {
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
+  transform: scale(1.05);
 }
 
 /* === GENERAL SECTION STYLING === */
 .section {
   padding: 6rem 0;
-  text-align: center;
 }
 
 .section h2 {
+  text-align: center;
   font-size: 2.5rem;
-  display: inline-block;
-  margin-bottom: 4rem;
+  display: block;
+  max-width: fit-content;
+  margin: 0 auto 4rem auto;
   padding-bottom: 0.5rem;
   border-bottom: 3px solid var(--accent-color);
 }
 
 /* === ABOUT SECTION === */
-.about-content {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: left;
 }
 
-.about-text {
-  flex: 1;
+.about-text p {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 }
 
-.skills-grid {
-  flex: 1;
+.skills-grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1.5rem;
+  margin-top: 4rem;
 }
 
-.skill-item {
+@media (max-width: 1024px) {
+  .skills-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 3rem;
-  transition: color 0.3s;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.skill-item:hover {
-  color: var(--accent-color);
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-.skill-item span {
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #E53935, #3F51B5);
+}
+
+.skill-card svg {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.skill-card span {
   font-size: 1rem;
-  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--secondary-text);
 }
+
 
 /* === PROJECTS SECTION === */
-.project-item {
-  display: flex;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  align-items: center;
-  margin-bottom: 5rem;
   text-align: left;
 }
 
-/* This creates the alternating layout */
-.project-item:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.project-image {
-  flex: 1.5;
-}
-
-.project-image img {
-  width: 100%;
+.project-card {
+  background-color: var(--surface-color);
   border-radius: 8px;
-  border: 1px solid var(--surface-color);
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
 }
 
-.project-text {
-  flex: 1;
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-.project-text h3 {
-  font-size: 1.8rem;
-  color: var(--accent-color);
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-content {
+  padding: 1.5rem;
+}
+
+.project-card-content h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.project-card-content p {
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
 }
 
 .project-links a {
@@ -183,14 +245,13 @@ body {
   font-weight: bold;
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  transition: color 0.3s, border-bottom 0.3s;
+  transition: color 0.3s, border-bottom-color 0.3s;
 }
 
 .project-links a:hover {
   color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom-color: var(--accent-color);
 }
-
 
 /* === CONTACT SECTION === */
 .contact-form {
@@ -232,6 +293,8 @@ body {
 .footer {
   text-align: center;
   padding: 2rem;
+  border-top: 1px solid var(--surface-color);
+  margin-top: 4rem;
 }
 
 .social-links-footer a {
@@ -247,88 +310,7 @@ body {
 
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
-  .about-content, .project-item, .project-item:nth-child(even) {
-    flex-direction: column;
-  }
-  
   .hero-content h1 {
     font-size: 2.5rem;
   }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
-
-/* === NEW ABOUT SECTION STYLES === */
-
-.about-container {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  color: var(--secondary-text);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.skills-grid-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop */
-  gap: 1.5rem;
-  margin-top: 4rem;
-}
-
-/* --- Add these for responsive adjustments --- */
-@media (max-width: 992px) {
-  .skills-grid-container {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  .skills-grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-  }
-}
-
-.skill-card {
-  background: var(--surface-color); /* The dark inner color */
-  border-radius: 12px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-  z-index: 1;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  z-index: -1;
-  margin: -2px; /* Border width */
-  border-radius: inherit; /* Inherit the border-radius */
-  background: linear-gradient(135deg, #E53935, #3F51B5);
-}
-
-.skill-card svg {
-  font-size: 3.5rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-color);
-}
-
-.skill-card span {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--secondary-text);
-}
-
