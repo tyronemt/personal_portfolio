@@ -1,129 +1,149 @@
 /* --- General Section Styling --- */
 .section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
 }
 
 .section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    text-align: center;
-    color: #e6f1ff;
+  font-size: 2.5rem;
+  margin-bottom: 60px; /* Increased margin for more space */
+  text-align: center;
+  color: #e6f1ff;
 }
 
 /* --- Timeline Container --- */
 .experience-timeline {
-    position: relative;
-    padding-left: 50px; /* Space for the timeline bar and dots */
+  position: relative;
+  padding-left: 60px; /* Increased padding for a wider gutter */
 }
 
 /* The vertical line of the timeline */
 .experience-timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 10px;
-    bottom: 10px;
-    width: 2px;
-    background: #3d3d52; /* Line color */
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px; /* Slightly thicker line */
+  background: #3d3d52;
+  border-radius: 3px;
 }
 
 /* --- Timeline Item (Dot + Content) --- */
 .timeline-item {
-    position: relative;
-    margin-bottom: 50px;
+  position: relative;
+  margin-bottom: 70px; /* Increased space between job entries */
+}
+
+/* Remove default margin from the last item to avoid extra space */
+.timeline-item:last-child {
+  margin-bottom: 0;
 }
 
 /* The dot on the timeline */
 .timeline-dot {
-    position: absolute;
-    left: -30px; /* (50px padding - 20px dot-center) */
-    top: 5px;
-    height: 12px;
-    width: 12px;
-    background: #3d3d52;
-    border: 2px solid #64ffda; /* Your accent color */
-    border-radius: 50%;
-    z-index: 1;
+  position: absolute;
+  left: -26px; /* Adjusted position based on new padding */
+  top: 5px;
+  height: 14px;
+  width: 14px;
+  background: #3d3d52;
+  border: 3px solid #64ffda;
+  border-radius: 50%;
+  z-index: 1;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 /* --- Glassmorphism Card --- */
 .timeline-content {
-    background: rgba(42, 42, 62, 0.6); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* The "frosted glass" effect */
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(100, 255, 218, 0.2); /* Subtle border with your accent color */
-    border-radius: 12px;
-    padding: 25px 30px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(42, 42, 62, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 12px;
+  padding: 30px 35px; /* Increased padding inside the card */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
 }
 
+/* --- Hover Effects --- */
+.timeline-item:hover .timeline-content {
+  transform: translateY(-5px); /* Lift the card on hover */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.timeline-item:hover .timeline-dot {
+  background-color: #64ffda; /* Fill the dot on hover */
+}
+
+/* --- Card Content Styling --- */
 .timeline-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .timeline-header h3 {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #ccd6f6;
+  margin: 0;
+  font-size: 1.4rem; /* Slightly larger for more emphasis */
+  color: #e6f1ff; /* Brighter color for the title */
+  font-weight: 600;
 }
 
 .timeline-header span {
-    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-    font-size: 0.85rem;
-    color: #a8b2d1;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+  color: #a8b2d1;
+  white-space: nowrap; /* Prevent date from wrapping on smaller screens */
+  margin-left: 15px; /* Ensure space between title and date */
 }
 
 .company-name {
-    margin: 0 0 20px 0;
-    color: #64ffda; /* Your accent color */
-    font-size: 1rem;
-    font-weight: 500;
+  margin: 0 0 25px 0; /* Increased bottom margin */
+  color: #64ffda;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .timeline-content ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 25px 0;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0; /* Increased bottom margin */
 }
 
 .timeline-content li {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 12px;
-    color: #8892b0;
-    line-height: 1.6;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  color: #a8b2d1; /* Brighter text for better readability */
+  line-height: 1.6;
 }
 
-/* Custom bullet points using your accent color */
+/* Custom bullet points */
 .timeline-content li::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 9px;
-    height: 6px;
-    width: 6px;
-    background: #64ffda;
-    border-radius: 50%;
+  content: '▹'; /* Using a character for a sharper look */
+  position: absolute;
+  left: 0;
+  top: 1px; /* Adjust position for the character */
+  color: #64ffda;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 /* --- Skills Tags --- */
 .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .tag-pill {
-    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-    font-size: 0.8rem;
-    color: #a8b2d1;
-    background: rgba(61, 61, 82, 0.7); /* Subtle background for tags */
-    padding: 5px 12px;
-    border-radius: 15px;
-    border: 1px solid #3d3d52;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  color: #ccd6f6; /* Brighter tag text */
+  background: rgba(100, 255, 218, 0.1); /* Background tint using accent color */
+  padding: 6px 14px;
+  border-radius: 15px;
 }
