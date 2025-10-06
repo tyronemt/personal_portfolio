@@ -12,7 +12,7 @@ const experienceData = [
       'Performed in-depth software analysis and implemented code for new features, system enhancements, and critical bug fixes.',
       'Authored detailed technical documentation to support formal technical reviews and communicate project status to stakeholders.',
       'Translated complex project requirements and objectives into functional, high-quality code for software components and configuration items.',
-      ' Collaborated with peers and other government agencies to integrate software components, ensuring project goals were met according to technical specifications and schedules.',
+      'Collaborated with peers and other government agencies to integrate software components, ensuring project goals were met according to technical specifications and schedules.',
     ],
     tags: ['Ada', 'C++', 'Embedded Systems', 'Real-Time OS'],
   },
@@ -26,7 +26,7 @@ const experienceData = [
       'Oversaw IT systems, including 100+ websites, internal applications, and 11 data centers, using Datadog and Pingdom.',
       'Verified and resolved issues by analyzing root causes and applying appropriate standard operating procedures, and identified areas for improvement in monitoring systems and methods.',
     ],
-    tags: ['React', 'Java', 'Python', 'Selenium', 'Datadog'],
+    tags: ['Fullstack', 'React', 'Java', 'Python', 'Selenium', 'Datadog','Pingdom'],
   },
 ];
 
